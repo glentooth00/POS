@@ -9,20 +9,76 @@
                 <x-app-logo :sidebar="true" href="{{ route('dashboard') }}" wire:navigate />
                 <flux:sidebar.collapse class="lg:hidden" />
             </flux:sidebar.header>
+   
 
-            <flux:sidebar.nav>
-                <flux:sidebar.group :heading="__('')" class="grid">
-                    <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
-                    </flux:sidebar.item>
-                     <flux:sidebar.item icon="rectangle-stack" :href="route('inventory.index')" :current="request()->routeIs('inventory.index')" wire:navigate>
-                        {{ __('Inventory') }}
-                    </flux:sidebar.item>
-                     <flux:sidebar.item icon="user-circle" :href="route('users.index')" :current="request()->routeIs('user.index')" wire:navigate>
-                        {{ __('Users') }}
-                    </flux:sidebar.item>
-                </flux:sidebar.group>
-            </flux:sidebar.nav>
+<flux:sidebar.nav>
+    <flux:sidebar.group :heading="__('POS Menus')" class="grid">
+
+        {{-- Dashboard --}}
+        <flux:sidebar.item
+            icon="home"
+            :href="route('dashboard')"
+            :current="request()->routeIs('dashboard')"
+            wire:navigate
+        >
+            {{ __('Dashboard') }}
+        </flux:sidebar.item>
+
+        {{-- Products --}}
+        <flux:sidebar.item
+            icon="cube"
+            :href="route('inventory.index')"
+            wire:navigate
+        >
+            {{ __('Products') }}
+        </flux:sidebar.item>
+
+        {{-- Stock Inventory --}}
+        <flux:sidebar.item
+            icon="archive-box"
+            :href="route('stock_inventory.index')"
+            wire:navigate
+        >
+            {{ __('Stock Inventory') }}
+        </flux:sidebar.item>
+
+        {{-- New Stock Entries --}}
+        <flux:sidebar.item
+            icon="plus-circle"
+            :href="route('stock_entries.index')"
+            wire:navigate
+        >
+            {{ __('New Stock Entries') }}
+        </flux:sidebar.item>
+
+        {{-- Purchase Return --}}
+        <flux:sidebar.item
+            icon="arrow-uturn-left"
+            :href="route('purchase_returns.index')"
+            wire:navigate
+        >
+            {{ __('Purchase Return') }}
+        </flux:sidebar.item>
+
+        {{-- QA Stocks --}}
+        <flux:sidebar.item
+            icon="clipboard-document-check"
+            :href="route('qa_stocks.index')"
+            wire:navigate
+        >
+            {{ __('QA Stocks') }}
+        </flux:sidebar.item>
+
+        {{-- Daily Sales --}}
+        <flux:sidebar.item
+            icon="chart-bar"
+        >
+            {{ __('Daily Sales') }}
+        </flux:sidebar.item>
+
+    </flux:sidebar.group>
+</flux:sidebar.nav>
+
 
             <flux:spacer />
 
